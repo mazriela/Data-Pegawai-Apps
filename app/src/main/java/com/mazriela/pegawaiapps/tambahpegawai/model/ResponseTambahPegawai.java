@@ -1,4 +1,4 @@
-package com.mazriela.pegawaiapps.model;
+package com.mazriela.pegawaiapps.tambahpegawai.model;
 
 import com.google.gson.annotations.SerializedName;
 

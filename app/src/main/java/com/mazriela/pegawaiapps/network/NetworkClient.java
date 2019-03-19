@@ -14,7 +14,7 @@ public class NetworkClient {
             .build();
     public static Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://192.168.122.1/server_pegawai/index.php/Api/")
-            .addConverter Factory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build();
 

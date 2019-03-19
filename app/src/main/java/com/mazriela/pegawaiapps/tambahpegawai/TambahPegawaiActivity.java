@@ -10,10 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mazriela.pegawaiapps.R;
-import com.mazriela.pegawaiapps.model.ResponseTambahPegawai;
+import com.mazriela.pegawaiapps.tambahpegawai.model.ResponseTambahPegawai;
 import com.mazriela.pegawaiapps.network.NetworkClient;
-
-import org.w3c.dom.Text;
 
 import retrofit2.Call;
 import retrofit2.Callback;
