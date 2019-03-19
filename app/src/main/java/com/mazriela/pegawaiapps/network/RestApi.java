@@ -1,10 +1,12 @@
 package com.mazriela.pegawaiapps.network;
 
 import com.mazriela.pegawaiapps.tambahpegawai.model.ResponseTambahPegawai;
+import com.mazriela.pegawaiapps.tampilpegawai.model.ResponseTampilPegawai;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface RestApi {
@@ -18,8 +20,8 @@ public interface RestApi {
             @Field("alamat_pegawai") String alamatPegawai
     );
 
-    @FormUrlEncoded
-    @POST("tampil pegawai")
-    Call<ResponseTambahPegawai> tampil_pegawai();
+
+    @GET("tampil_pegawai")
+    Call<ResponseTampilPegawai> tampil_pegawai();
 
 }
