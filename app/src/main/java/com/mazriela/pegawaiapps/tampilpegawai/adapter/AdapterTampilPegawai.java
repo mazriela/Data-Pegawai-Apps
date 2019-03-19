@@ -1,6 +1,7 @@
 package com.mazriela.pegawaiapps.tampilpegawai.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mazriela.pegawaiapps.R;
+import com.mazriela.pegawaiapps.detailpegawai.DetailPegawaiActivity;
 import com.mazriela.pegawaiapps.tampilpegawai.model.DataItem;
 
 import java.util.List;
@@ -25,6 +27,7 @@ public class AdapterTampilPegawai  extends RecyclerView.Adapter<AdapterTampilPeg
 
 
 
+
     @NonNull
     @Override
     public AdapterTampilPegawai.MyHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -33,12 +36,29 @@ public class AdapterTampilPegawai  extends RecyclerView.Adapter<AdapterTampilPeg
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterTampilPegawai.MyHolder myHolder, int position) {
+    public void onBindViewHolder(@NonNull final AdapterTampilPegawai.MyHolder myHolder, final int position) {
         final DataItem dataItem = dataItemList.get(position);
 
         myHolder.idPegawai.setText(dataItem.getIdPegawai());
         myHolder.namaPegawai.setText(dataItem.getNamaPegawai());
         myHolder.emailPegawai.setText(dataItem.getEmailPegawai());
+
+        //TODO : Ketika item di click
+        myHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //membawa data (put extra)
+                Intent intent = new Intent(myHolder.itemView.getContext(),DetailPegawaiActivity.class);
+                intent.putExtra("data_pegawai", dataItem);
+//                intent.putExtra("nama_pegawai",dataItemList.get(position).getNamaPegawai());
+//                intent.putExtra("email_pegawai",dataItemList.get(position).getEmailPegawai());
+//                intent.putExtra("no_hp_pegawai", dataItemList.get(position).getNoHpPegawai());
+//                intent.putExtra("alamat_pegawai",dataItemList.get(position).getAlamatPegawai());
+
+                myHolder.itemView.getContext().startActivity(intent);
+
+            }
+        });
 
     }
 
