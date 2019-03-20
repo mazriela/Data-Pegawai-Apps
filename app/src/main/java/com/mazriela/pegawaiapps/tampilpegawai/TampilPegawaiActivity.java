@@ -1,6 +1,8 @@
 package com.mazriela.pegawaiapps.tampilpegawai;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,6 +12,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.Toast;
 
 import com.mazriela.pegawaiapps.R;
 import com.mazriela.pegawaiapps.network.NetworkClient;
@@ -32,6 +35,9 @@ public class TampilPegawaiActivity extends AppCompatActivity {
     private List<DataItem> dataItemList;
     Button btnTambahPegawai;
 
+    private long backPressedTime;
+    private Toast backToast;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +53,7 @@ public class TampilPegawaiActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TampilPegawaiActivity.this,TambahPegawaiActivity.class));
+                finish();
             }
         });
         
@@ -81,4 +88,42 @@ public class TampilPegawaiActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder  = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setMessage("Yakin Mau ketemu pak ndul?");
+        builder.setPositiveButton("Mau dong", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //TODO : Jika opsi yes dipilih maka kita akan keluar aplikasi
+                finish();
+            }
+        });
+        builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                /*TODO : Jika opsi no di pilih maka dialog akan keluar dan aplikasi akan berlanjut*/
+                dialog.cancel();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+        super.onBackPressed();
+    }
+
+    //    @Override
+//    public void onBackPressed() {
+//        if (backPressedTime + 2000 > System.currentTimeMillis()){
+//            backToast.cancel();
+//            super.onBackPressed();
+//            return;
+//        } else {
+//          backToast = Toast.makeText(this, "Tekan 2 kali untuk keluar", Toast.LENGTH_SHORT);
+//            backToast.show();
+//        }
+//        backPressedTime = System.currentTimeMillis();
+//    }
 }

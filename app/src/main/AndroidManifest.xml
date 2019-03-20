@@ -23,6 +23,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".tampilpegawai.TampilPegawaiActivity" />
         </activity>
+        <activity android:name=".editpegawai.EditPegawaiActivity"></activity>
     </application>
 
 </manifest>
