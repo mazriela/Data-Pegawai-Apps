@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.mazriela.pegawaiapps.R;
 import com.mazriela.pegawaiapps.detailpegawai.DetailPegawaiActivity;
+import com.mazriela.pegawaiapps.editpegawai.EditPegawaiActivity;
 import com.mazriela.pegawaiapps.network.NetworkClient;
 import com.mazriela.pegawaiapps.tampilpegawai.TampilPegawaiActivity;
 import com.mazriela.pegawaiapps.tampilpegawai.model.DataItem;
@@ -52,6 +53,19 @@ public class AdapterTampilPegawai  extends RecyclerView.Adapter<AdapterTampilPeg
 //        myHolder.idPegawai.setText(dataItem.getIdPegawai());
         myHolder.namaPegawai.setText(dataItem.getNamaPegawai());
         myHolder.emailPegawai.setText(dataItem.getEmailPegawai());
+
+        //TODO: Ketika edit di klik
+        myHolder.btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,EditPegawaiActivity.class);
+                intent.putExtra("data_pegawai",dataItem);
+
+
+                myHolder.itemView.getContext().startActivity(intent);
+                ((Activity)context).finish();
+            }
+        });
 
         //TODO : Ketika Hapus Di kklik
         myHolder.btnHapus.setOnClickListener(new View.OnClickListener() {
@@ -123,13 +137,14 @@ public class AdapterTampilPegawai  extends RecyclerView.Adapter<AdapterTampilPeg
     //menyambungkan ke item dari layout item_list_data
     public class MyHolder extends RecyclerView.ViewHolder {
         public TextView namaPegawai,emailPegawai,idPegawai;
-        Button btnHapus;
+        Button btnHapus,btnEdit;
         public MyHolder(@NonNull View itemView) {
             super(itemView);
 
             namaPegawai = itemView.findViewById(R.id.tvNamaPegawai);
             emailPegawai = itemView.findViewById(R.id.tvEmailPegawai);
             btnHapus = itemView.findViewById(R.id.btnHapus);
+            btnEdit = itemView.findViewById(R.id.btnEdit);
 
         }
     }

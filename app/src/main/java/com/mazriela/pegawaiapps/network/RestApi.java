@@ -1,5 +1,6 @@
 package com.mazriela.pegawaiapps.network;
 
+import com.mazriela.pegawaiapps.editpegawai.model.ResponseEditPegawai;
 import com.mazriela.pegawaiapps.tambahpegawai.model.ResponseTambahPegawai;
 import com.mazriela.pegawaiapps.tampilpegawai.model.ResponseHapusPegawai;
 import com.mazriela.pegawaiapps.tampilpegawai.model.ResponseTampilPegawai;
@@ -29,6 +30,16 @@ public interface RestApi {
     @POST("hapus_pegawai")
     Call<ResponseHapusPegawai> hapus_pegawai(
             @Field("id_pegawai") String idPegawai
+    );
+
+    @FormUrlEncoded
+    @POST("edit_pegawai")
+    Call<ResponseEditPegawai> edit_pegawai(
+            @Field("id_pegawai") String idPegawai,
+            @Field("nama_pegawai") String namaPegawai,
+            @Field("email_pegawai")String emailPegawai,
+            @Field("no_hp_pegawai") String noHpPegawai,
+            @Field("alamat_pegawai") String alamatPegawai
     );
 
 }
