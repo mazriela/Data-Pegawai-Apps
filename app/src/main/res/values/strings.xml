@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Pegawai Apps</string>
+
+    <string name="Test">sadsad</string>
+    <string name="text_dialog_hello">Say helo to mr Ndul</string>
 </resources>
